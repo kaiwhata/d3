@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>D3 loading Chalkle data</title>
+        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+        <style type="text/css">
+			
+        </style>  
+    </head>
+    <body>
+        <script type="text/javascript">
+		//run:
+		// python -m SimpleHTTPServer 8888 & 
+		//in terminal before loading data
+	var format = d3.time.format("%b %Y");
+
+		d3.json("http://localhost:8000/stocks.json", function(stocks) {
+		  stocks.forEach(function(d) {
+		    d.date = format.parse(d.date);		 
+		   });
+		 });
+			</script>
+    </body>
+</html> 
+
